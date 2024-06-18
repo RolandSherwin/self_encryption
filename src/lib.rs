@@ -567,15 +567,21 @@ fn get_pki(src_hash: &XorName, n_1_src_hash: &XorName, n_2_src_hash: &XorName) -
 // Returns the number of chunks according to file size.
 fn get_num_chunks(file_size: usize) -> usize {
     if file_size < (3 * MIN_CHUNK_SIZE) {
+        println!("Less than 3 * MIN_CHUNK_SIZE, 0");
         return 0;
     }
     if file_size < (3 * MAX_CHUNK_SIZE) {
+        println!("Less than 3 * MAX_CHUNK_SIZE, 3");
         return 3;
     }
     if file_size % MAX_CHUNK_SIZE == 0 {
-        file_size / MAX_CHUNK_SIZE
+        let gg = file_size / MAX_CHUNK_SIZE;
+        println!("file_size % MAX_CHUNK_SIZE == 0, {gg}");
+        gg
     } else {
-        (file_size / MAX_CHUNK_SIZE) + 1
+        let gg = (file_size / MAX_CHUNK_SIZE) + 1;
+        println!("ELSEE, {gg}");
+        gg
     }
 }
 
